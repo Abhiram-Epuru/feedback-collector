@@ -1,17 +1,17 @@
-#Feedback Collector App
+# Feedback Collector App
 
 A simple feedback collection platform where users can submit their feedback via a form 
 and view the feedback collected.
 
-##Table of Contents
-   1.Project Description
-   2.Tech Stack
-   3.Features
-   4.Deployment
-   5.How to Run Locally
-   6.Screenshots
-   7.Contributors
-   8.License
+## Table of Contents
+1.Project Description
+2.Tech Stack
+3.Features
+4.Deployment
+5.How to Run Locally
+6.Screenshots
+7.Contributors
+8.License
    
 ## 1.Project Description
 The Feedback Collector App is a full-stack application that allows users to submit their feedback through a form. The feedback is then displayed in a list on the app's front-end.
