@@ -13,7 +13,7 @@ function App() {
   useEffect(() => {
     const fetchFeedbacks = async () => {
       try {
-        const response = await fetch('http://localhost:5000/submit-feedback');
+        const response = await fetch('https://feedback-collector-backend-i6hz.onrender.com/submit-feedback');
         if (response.ok) {
           const data = await response.json();
           setFeedbacks(data);
@@ -56,7 +56,7 @@ function App() {
 
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/submit-feedback', { // Ensure the full URL is used
+      const response = await fetch('https://feedback-collector-backend-i6hz.onrender.com/submit-feedback', { 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, message }),
