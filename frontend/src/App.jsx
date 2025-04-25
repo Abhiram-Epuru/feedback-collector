@@ -32,7 +32,8 @@ function App() {
 
     setLoading(true);
     setTimeout(() => {
-      const newFeedback = { name, email, message };
+      const timestamp = new Date().toLocaleString();
+      const newFeedback = { name, email, message, timestamp };
       setFeedbacks((prev) => [...prev, newFeedback]);
       setForm({ name: '', email: '', message: '' });
       setLoading(false);
@@ -42,40 +43,59 @@ function App() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-200 via-pink-100 to-yellow-100 p-6">
-      <div className="w-full max-w-xl bg-white-350/90 p-8 rounded-2xl shadow-xl space-y-6 transition-transform duration-300 ease-in-out hover:scale-[1.01]">
+      <div className="w-full max-w-xl bg-white/90 p-8 rounded-2xl shadow-xl space-y-6 transition-transform duration-300 ease-in-out hover:scale-[1.01]">
         {!showAdminView ? (
           <>
             <h1 className="text-3xl font-bold text-center text-gray-800">Feedback Collector</h1>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <input
-                type="text"
-                name="name"
-                placeholder="Full Name"
-                value={form.name}
-                onChange={handleChange}
-                className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={form.email}
-                onChange={handleChange}
-                className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all"
-              />
-              <textarea
-                name="message"
-                placeholder="Your Feedback"
-                value={form.message}
-                onChange={handleChange}
-                className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all"
-                rows="4"
-              />
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                  Feedback
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  value={form.message}
+                  onChange={handleChange}
+                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                />
+              </div>
+
               {error && <p className="text-red-500 text-sm">{error}</p>}
+
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition duration-300"
+                className="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition"
               >
                 {loading ? 'Submitting...' : 'Submit Feedback'}
               </button>
@@ -83,7 +103,7 @@ function App() {
 
             <button
               onClick={() => setShowAdminView(true)}
-              className="w-full bg-gray-700 text-white py-2 rounded-md hover:bg-gray-800 transition mt-4"
+              className="w-full bg-gray-800 text-white py-2 rounded-md hover:bg-gray-900 transition mt-4 font-medium"
             >
               View Submitted Feedback
             </button>
